@@ -1,12 +1,12 @@
-import { View } from 'react-native';
-import { useState, useEffect } from 'react';
-import tw from 'twrnc';
-import Diary from '../components/diary/Diary';
-import { useSelector } from 'react-redux';
-import Planning from '../components/planning/Planning';
-//import {API_KEY} from '@env';
+import { View } from "react-native";
+import { useState, useEffect } from "react";
+import tw from "twrnc";
+import Diary from "../components/diary/Diary";
+import { useSelector } from "react-redux";
+import Planning from "../components/planning/Planning";
+// import { API_KEY } from "@env";
 
-const API_KEY = 'http://192.168.1.59:3000';
+// const API_KEY = "http://192.168.1.59:3000";
 
 export default function TravelScreen({ route }) {
   const { travelId } = route.params;

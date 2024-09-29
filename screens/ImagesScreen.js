@@ -1,31 +1,33 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState } from "react";
 import {
   StyleSheet,
   Text,
   View,
   Image,
   ScrollView,
-  TouchableOpacity
-} from 'react-native';
-import { useFocusEffect } from '@react-navigation/native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import tw from 'twrnc';
-import { useSelector, useDispatch } from 'react-redux';
-import { initAllImages } from '../reducers/allImages';
-import ModalBigPhotos from '../components/imagesscreen/ModalBigPhotos';
-import Loader from '../components/loaders/Loader';
+  TouchableOpacity,
+} from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import tw from "twrnc";
+import { useSelector, useDispatch } from "react-redux";
+import { initAllImages } from "../reducers/allImages";
+import ModalBigPhotos from "../components/imagesscreen/ModalBigPhotos";
+import Loader from "../components/loaders/Loader";
+import { API_KEY } from "@env";
+// import env from 'react-native-dotenv';
+// const API_KEY='http://192.168.1.59:3000';
 
-const API_KEY='http://192.168.1.59:3000';
-
-export default function ImagesScreen() {
+// export defaultimport env from 'react-native-dotenv';
+function ImagesScreen() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
   const images = useSelector((state) => state.allImages.value);
 
   const [isLoading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
-  const [photo, setPhoto] = useState('');
-  const [avatarUrl, setAvatarUrl] = useState('');
+  const [photo, setPhoto] = useState("");
+  const [avatarUrl, setAvatarUrl] = useState("");
 
   const handleShowImage = (photo) => {
     setPhoto(photo);
@@ -35,7 +37,7 @@ export default function ImagesScreen() {
   useFocusEffect(
     useCallback(() => {
       const getImages = fetch(`${API_KEY}/allPictures`, {
-        method: 'GET',
+        method: "GET",
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -67,9 +69,15 @@ export default function ImagesScreen() {
           </Text>
           {images && images.length > 0 ? (
             <ScrollView style={tw`w-full h-full px-[.5rem]`}>
-              <View style={tw`flex flex-row items-center w-full h-full flex-wrap`}>
+              <View
+                style={tw`flex flex-row items-center w-full h-full flex-wrap`}
+              >
                 {images.map((image, index) => (
-                  <TouchableOpacity key={index} style={styles.imageContainer} onPress={() => handleShowImage(image)}>
+                  <TouchableOpacity
+                    key={index}
+                    style={styles.imageContainer}
+                    onPress={() => handleShowImage(image)}
+                  >
                     <Image source={{ uri: image }} style={styles.image} />
                   </TouchableOpacity>
                 ))}
@@ -82,14 +90,18 @@ export default function ImagesScreen() {
           )}
         </>
       )}
-      <ModalBigPhotos showModal={showModal} setShowModal={setShowModal} photo={photo} />
+      <ModalBigPhotos
+        showModal={showModal}
+        setShowModal={setShowModal}
+        photo={photo}
+      />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   imageContainer: {
-    width: '50%',
+    width: "50%",
     aspectRatio: 1,
     padding: 2,
   },

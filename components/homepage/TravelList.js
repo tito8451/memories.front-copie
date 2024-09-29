@@ -1,13 +1,13 @@
-import { useEffect } from 'react';
-import { ScrollView, View, Text } from 'react-native';
-import TravelCard from './TravelCard';
-import tw from 'twrnc';
-import ButtonLarge from '../ButtonLarge';
-import { useSelector, useDispatch } from 'react-redux';
-import { initTravel } from '../../reducers/travel';
-//import {API_KEY} from '@env';
+import { useEffect } from "react";
+import { ScrollView, View, Text } from "react-native";
+import TravelCard from "./TravelCard";
+import tw from "twrnc";
+import ButtonLarge from "../ButtonLarge";
+import { useSelector, useDispatch } from "react-redux";
+import { initTravel } from "../../reducers/travel";
+import { API_KEY } from "@env";
 
-const API_KEY = 'http://192.168.1.59:3000';
+// const API_KEY = 'http://192.168.1.59:3000';
 
 export default function TravelList({ setNewTravel, navigation, onClick }) {
   const dispatch = useDispatch();

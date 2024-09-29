@@ -4,19 +4,19 @@ import {
   TouchableOpacity,
   Text,
   Keyboard,
-} from 'react-native';
-import tw from 'twrnc';
-import ButtonLarge from '../ButtonLarge';
-import DiaryCard from './DiaryCard';
-import Header from '../Header';
-import AddButton from '../AddButton';
-import Loader from '../loaders/Loader';
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { initDiary, addNewDiary } from '../../reducers/diary';
-//import {API_KEY} from '@env';
+} from "react-native";
+import tw from "twrnc";
+import ButtonLarge from "../ButtonLarge";
+import DiaryCard from "./DiaryCard";
+import Header from "../Header";
+import AddButton from "../AddButton";
+import Loader from "../loaders/Loader";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { initDiary, addNewDiary } from "../../reducers/diary";
+import { API_KEY } from "@env";
 
-const API_KEY = 'http://192.168.1.59:3000';
+// const API_KEY = 'http://192.168.1.59:3000';
 
 export default function Diary({ isDairyActive, setIsDairyActive, travel }) {
   const dispatch = useDispatch();
@@ -28,9 +28,9 @@ export default function Diary({ isDairyActive, setIsDairyActive, travel }) {
   const handleNewDiary = () => {
     setIsLoading(true);
     fetch(`${API_KEY}/diary/newDiary?travelId=${travel._id}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title: '', description: '' }),
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: "", description: "" }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -52,13 +52,13 @@ export default function Diary({ isDairyActive, setIsDairyActive, travel }) {
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
-      'keyboardDidShow',
+      "keyboardDidShow",
       () => {
         setKeyboardVisible(true);
       }
     );
     const keyboardDidHideListener = Keyboard.addListener(
-      'keyboardDidHide',
+      "keyboardDidHide",
       () => {
         setKeyboardVisible(false);
       }

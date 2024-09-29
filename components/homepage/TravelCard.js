@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   StyleSheet,
   TouchableOpacity,
@@ -7,13 +7,13 @@ import {
   View,
   Dimensions,
   TouchableWithoutFeedback,
-} from 'react-native';
-import tw from 'twrnc';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteTravel } from '../../reducers/travel';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { reverseDate } from '../../utils/functions';
-import {API_KEY} from '@env'
+} from "react-native";
+import tw from "twrnc";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTravel } from "../../reducers/travel";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import { reverseDate } from "../../utils/functions";
+import { API_KEY } from "@env";
 
 export default function TravelCard({ travel, navigation, onClick }) {
   const dispatch = useDispatch();
@@ -23,20 +23,23 @@ export default function TravelCard({ travel, navigation, onClick }) {
 
   const handleClick = () => {
     onClick();
-    navigation.navigate('Travel', { travelId: travel._id });
+    navigation.navigate("Travel", { travelId: travel._id });
   };
 
   const handleDelete = () => {
-    fetch(`${API_KEY}/travel/deleteTrip?travelId=${travel._id}&userId=${user._id}`, {
-      method: 'DELETE',
-    })
-    .then (response => response.json())
-    .then(data => {
-     if(data.result) {
-        dispatch(deleteTravel(travel._id));
-        setIsDelete(false);
+    fetch(
+      `${API_KEY}/travel/deleteTrip?travelId=${travel._id}&userId=${user._id}`,
+      {
+        method: "DELETE",
       }
-    })
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.result) {
+          dispatch(deleteTravel(travel._id));
+          setIsDelete(false);
+        }
+      });
   };
 
   return (
@@ -61,14 +64,23 @@ export default function TravelCard({ travel, navigation, onClick }) {
             {travel.coverImage ? (
               <Image source={{ uri: travel.coverImage }} style={styles.image} />
             ) : (
-              <Image source={require('../../assets/favicon.png')} style={styles.image} />
+              <Image
+                source={require("../../assets/favicon.png")}
+                style={styles.image}
+              />
             )}
           </View>
           <View style={styles.travelCardTextContainer}>
-            <Text style={styles.travelCardDestination}>{travel.destination}</Text>
+            <Text style={styles.travelCardDestination}>
+              {travel.destination}
+            </Text>
             <View style={styles.dateContainer}>
-              <Text style={styles.travelCardDate}>Du {reverseDate(travel.departure)}</Text>
-              <Text style={styles.travelCardDate}>au {reverseDate(travel.return)}</Text>
+              <Text style={styles.travelCardDate}>
+                Du {reverseDate(travel.departure)}
+              </Text>
+              <Text style={styles.travelCardDate}>
+                au {reverseDate(travel.return)}
+              </Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -77,22 +89,22 @@ export default function TravelCard({ travel, navigation, onClick }) {
   );
 }
 
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   buttonTravelCard: {
-    flexDirection: 'row',
-    backgroundColor: 'transparent',
+    flexDirection: "row",
+    backgroundColor: "transparent",
     width: width * 0.8,
     height: height * 0.17, // Ajustez la hauteur pour englober toute l'image
-    alignItems: 'center',
+    alignItems: "center",
     paddingRight: 8,
     marginBottom: 32,
   },
   imageContainer: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    overflow: 'hidden', // Masque toute partie d'image qui dépasse
+    flexDirection: "row",
+    alignItems: "flex-start",
+    overflow: "hidden", // Masque toute partie d'image qui dépasse
   },
   image: {
     width: width * 0.28,
@@ -101,19 +113,19 @@ const styles = StyleSheet.create({
   },
   travelCardTextContainer: {
     padding: 10,
-    justifyContent: 'space-around',
+    justifyContent: "space-around",
     height: height * 0.15, // Ajustez la hauteur pour correspondre à la hauteur du bouton
-    backgroundColor: '#073040',
+    backgroundColor: "#073040",
     width: width * 0.52,
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
   },
   travelCardDate: {
-    color: '#F2DCC2',
+    color: "#F2DCC2",
     fontSize: Math.min(width, height) * 0.04,
   },
   travelCardDestination: {
-    color: '#F2DCC2',
+    color: "#F2DCC2",
     fontSize: Math.min(width, height) * 0.06,
     marginBottom: 16,
   },

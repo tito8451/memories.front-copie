@@ -1,16 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { View, Image, TouchableOpacity, TextInput, Text } from 'react-native';
-import tw from 'twrnc';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { useDispatch } from 'react-redux';
-import { updateDiary, deleteDiary } from '../../reducers/diary';
-import * as ImagePicker from 'expo-image-picker';
-import ModalPhotos from './ModalPhotos';
-import Loader from '../loaders/Loader';
-import ButtonUD from '../ButtonUpdateDelete';
-//import {API_KEY} from '@env';
+import React, { useState, useRef, useEffect } from "react";
+import { View, Image, TouchableOpacity, TextInput, Text } from "react-native";
+import tw from "twrnc";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import { useDispatch } from "react-redux";
+import { updateDiary, deleteDiary } from "../../reducers/diary";
+import * as ImagePicker from "expo-image-picker";
+import ModalPhotos from "./ModalPhotos";
+import Loader from "../loaders/Loader";
+import ButtonUD from "../ButtonUpdateDelete";
+import { API_KEY } from "@env";
 
-const API_KEY = 'http://192.168.1.59:3000';
+// const API_KEY = 'http://192.168.1.59:3000';
 
 export default function DiaryCard({ diary, travelId, setIsLoading }) {
   const dispatch = useDispatch();
@@ -18,9 +18,9 @@ export default function DiaryCard({ diary, travelId, setIsLoading }) {
   const [textHeight, setTextHeight] = useState(0);
 
   const [edit, setEdit] = useState(
-    diary.title === '' && diary.description === ''
+    diary.title === "" && diary.description === ""
   );
-  
+
   const [showModal, setShowModal] = useState(false);
 
   const [editTitle, setEditTitle] = useState(diary.title);
@@ -82,8 +82,8 @@ export default function DiaryCard({ diary, travelId, setIsLoading }) {
   const updateInfos = (infos) => {
     setIsLoading(true);
     fetch(`${API_KEY}/diary/update?diaryId=${diary._id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'multipart/form-data' },
+      method: "PUT",
+      headers: { "Content-Type": "multipart/form-data" },
       body: infos,
     })
       .then((response) => response.json())
@@ -100,20 +100,20 @@ export default function DiaryCard({ diary, travelId, setIsLoading }) {
     const formData = new FormData();
 
     if (diary.title !== editTitle) {
-      formData.append('title', editTitle);
+      formData.append("title", editTitle);
     }
 
     if (diary.description !== editContent) {
-      formData.append('description', editContent);
+      formData.append("description", editContent);
     }
 
     if (handleChangeImage()) {
       editPhotos.map((photoUrl) => {
-        if (photoUrl.startsWith('file')) {
-          formData.append('picture', {
+        if (photoUrl.startsWith("file")) {
+          formData.append("picture", {
             uri: photoUrl,
-            type: 'image/jpeg',
-            name: 'photo.jpg',
+            type: "image/jpeg",
+            name: "photo.jpg",
           });
         }
       });
@@ -125,8 +125,8 @@ export default function DiaryCard({ diary, travelId, setIsLoading }) {
   const handleDelete = () => {
     setIsLoading(true);
     fetch(`${API_KEY}/diary/?travelId=${travelId}&diaryId=${diary._id}`, {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
     })
       .then((response) => response.json())
       .then((data) => {
@@ -178,7 +178,7 @@ export default function DiaryCard({ diary, travelId, setIsLoading }) {
             placeholder="Titre"
             onChangeText={(value) => setEditTitle(value)}
             style={tw`text-[1rem] text-black ${
-              edit ? 'bg-white p-[.5rem] w-[80%]' : ''
+              edit ? "bg-white p-[.5rem] w-[80%]" : ""
             }`}
             editable={edit}
             value={editTitle}
@@ -271,10 +271,10 @@ export default function DiaryCard({ diary, travelId, setIsLoading }) {
             onLayout={updateTextHeight}
             style={tw`text-black ${
               edit
-                ? 'h-[10rem] bg-white p-[.5rem] w-full'
-                : `${editPhotos.length > 0 ? 'w-[60%] ml-[.5rem]' : 'w-full'}`
+                ? "h-[10rem] bg-white p-[.5rem] w-full"
+                : `${editPhotos.length > 0 ? "w-[60%] ml-[.5rem]" : "w-full"}`
             }`}
-            textAlignVertical={`${edit ? 'top' : 'middle'}`}
+            textAlignVertical={`${edit ? "top" : "middle"}`}
             value={editContent}
           />
         </View>

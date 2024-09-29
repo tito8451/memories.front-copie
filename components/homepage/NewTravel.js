@@ -1,16 +1,16 @@
-import { View, Image, TouchableOpacity, Keyboard } from 'react-native';
-import tw from 'twrnc';
-import Input from '../Input';
-import InputDate from '../InputDate';
-import { useState, useEffect } from 'react';
-import ButtonLarge from '../ButtonLarge';
-import { useDispatch, useSelector } from 'react-redux';
-import { addTravel } from '../../reducers/travel';
-import * as ImagePicker from 'expo-image-picker';
-import Loader from '../loaders/Loader';
-//import {API_KEY} from '@env';
+import { View, Image, TouchableOpacity, Keyboard } from "react-native";
+import tw from "twrnc";
+import Input from "../Input";
+import InputDate from "../InputDate";
+import { useState, useEffect } from "react";
+import ButtonLarge from "../ButtonLarge";
+import { useDispatch, useSelector } from "react-redux";
+import { addTravel } from "../../reducers/travel";
+import * as ImagePicker from "expo-image-picker";
+import Loader from "../loaders/Loader";
+import { API_KEY } from "@env";
 
-const API_KEY = 'http://192.168.1.59:3000';
+// const API_KEY = 'http://192.168.1.59:3000';
 
 export default function NewTravel({ navigation, newTravelName, onClick }) {
   const dispatch = useDispatch();
@@ -20,10 +20,10 @@ export default function NewTravel({ navigation, newTravelName, onClick }) {
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
   const [destination, setDestination] = useState(
-    newTravelName ? newTravelName : ''
+    newTravelName ? newTravelName : ""
   );
-  const [departureDate, setDepartureDate] = useState('');
-  const [returnDate, setReturnDate] = useState('');
+  const [departureDate, setDepartureDate] = useState("");
+  const [returnDate, setReturnDate] = useState("");
   const [selectedImageUri, setSelectedImageUri] = useState();
 
   const handleAddImage = async () => {
@@ -50,25 +50,25 @@ export default function NewTravel({ navigation, newTravelName, onClick }) {
   const createNewTravel = async (latitude, longitude) => {
     const formData = new FormData();
 
-    formData.append('latitude', latitude);
-    formData.append('longitude', longitude);
-    formData.append('destination', destination);
-    formData.append('departure', departureDate);
-    formData.append('return', returnDate);
+    formData.append("latitude", latitude);
+    formData.append("longitude", longitude);
+    formData.append("destination", destination);
+    formData.append("departure", departureDate);
+    formData.append("return", returnDate);
 
     if (selectedImageUri) {
-      formData.append('coverImage', {
+      formData.append("coverImage", {
         uri: selectedImageUri,
-        name: 'photo.jpg',
-        type: 'image/jpeg',
+        name: "photo.jpg",
+        type: "image/jpeg",
       });
     }
 
     fetch(`${API_KEY}/travel/newTravel`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'multipart/form-data',
-        'Authorization': `Bearer ${user.token}`,
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${user.token}`,
       },
       body: formData,
     })
@@ -79,7 +79,7 @@ export default function NewTravel({ navigation, newTravelName, onClick }) {
         if (data.result) {
           onClick();
           dispatch(addTravel(data.trip));
-          navigation.navigate('Travel', { travelId: data.trip._id });
+          navigation.navigate("Travel", { travelId: data.trip._id });
           setIsLoading(false);
         }
       });
@@ -105,13 +105,13 @@ export default function NewTravel({ navigation, newTravelName, onClick }) {
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
-      'keyboardDidShow',
+      "keyboardDidShow",
       () => {
         setKeyboardVisible(true);
       }
     );
     const keyboardDidHideListener = Keyboard.addListener(
-      'keyboardDidHide',
+      "keyboardDidHide",
       () => {
         setKeyboardVisible(false);
       }
@@ -126,7 +126,7 @@ export default function NewTravel({ navigation, newTravelName, onClick }) {
   return (
     <View
       style={tw`w-full flex flex-col items-center justify-between h-full ${
-        isKeyboardVisible ? 'absolute top-50' : ''
+        isKeyboardVisible ? "absolute top-50" : ""
       }`}
     >
       {isLoading ? (
