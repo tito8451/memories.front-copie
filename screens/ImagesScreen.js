@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,17 +6,17 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-} from "react-native";
-import { useFocusEffect } from "@react-navigation/native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import tw from "twrnc";
-import { useSelector, useDispatch } from "react-redux";
-import { initAllImages } from "../reducers/allImages";
-import ModalBigPhotos from "../components/imagesscreen/ModalBigPhotos";
-import Loader from "../components/loaders/Loader";
-import { API_KEY } from "@env";
+} from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import tw from 'twrnc';
+import { useSelector, useDispatch } from 'react-redux';
+import { initAllImages } from '../reducers/allImages';
+import ModalBigPhotos from '../components/imagesscreen/ModalBigPhotos';
+import Loader from '../components/loaders/Loader';
+// import { API_KEY } from "@env";
 // import env from 'react-native-dotenv';
-// const API_KEY='http://192.168.1.59:3000';
+const API_KEY = 'http://192.168.1.59:3000';
 
 // export defaultimport env from 'react-native-dotenv';
 function ImagesScreen() {
@@ -26,8 +26,8 @@ function ImagesScreen() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
-  const [photo, setPhoto] = useState("");
-  const [avatarUrl, setAvatarUrl] = useState("");
+  const [photo, setPhoto] = useState('');
+  const [avatarUrl, setAvatarUrl] = useState('');
 
   const handleShowImage = (photo) => {
     setPhoto(photo);
@@ -37,7 +37,7 @@ function ImagesScreen() {
   useFocusEffect(
     useCallback(() => {
       const getImages = fetch(`${API_KEY}/allPictures`, {
-        method: "GET",
+        method: 'GET',
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -101,7 +101,7 @@ function ImagesScreen() {
 
 const styles = StyleSheet.create({
   imageContainer: {
-    width: "50%",
+    width: '50%',
     aspectRatio: 1,
     padding: 2,
   },

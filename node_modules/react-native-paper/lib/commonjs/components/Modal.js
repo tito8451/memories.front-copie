@@ -17,6 +17,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 const DEFAULT_DURATION = 220;
+const AnimatedPressable = _reactNative.Animated.createAnimatedComponent(_reactNative.Pressable);
 
 /**
  * The Modal component is a simple way to present content above an enclosing view.
@@ -146,19 +147,18 @@ function Modal(_ref) {
     style: _reactNative.StyleSheet.absoluteFill,
     onAccessibilityEscape: hideModal,
     testID: testID
-  }, /*#__PURE__*/React.createElement(_reactNative.TouchableWithoutFeedback, {
+  }, /*#__PURE__*/React.createElement(AnimatedPressable, {
     accessibilityLabel: overlayAccessibilityLabel,
     accessibilityRole: "button",
     disabled: !dismissable,
     onPress: dismissable ? hideModal : undefined,
-    importantForAccessibility: "no"
-  }, /*#__PURE__*/React.createElement(_reactNative.Animated.View, {
-    testID: `${testID}-backdrop`,
+    importantForAccessibility: "no",
     style: [styles.backdrop, {
       backgroundColor: (_theme$colors = theme.colors) === null || _theme$colors === void 0 ? void 0 : _theme$colors.backdrop,
       opacity
-    }]
-  })), /*#__PURE__*/React.createElement(_reactNative.View, {
+    }],
+    testID: `${testID}-backdrop`
+  }), /*#__PURE__*/React.createElement(_reactNative.View, {
     style: [styles.wrapper, {
       marginTop: top,
       marginBottom: bottom

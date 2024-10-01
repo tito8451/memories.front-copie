@@ -6,6 +6,7 @@ import { Pressable } from './Pressable';
 import { getTouchableRippleColors } from './utils';
 import { SettingsContext } from '../../core/settings';
 import { useInternalTheme } from '../../core/theming';
+import { forwardRef } from '../../utils/forwardRef';
 import hasTouchHandler from '../../utils/hasTouchHandler';
 /**
  * A wrapper for views that should respond to touches.
@@ -32,7 +33,7 @@ import hasTouchHandler from '../../utils/hasTouchHandler';
  *
  * @extends Pressable props https://reactnative.dev/docs/Pressable#props
  */
-const TouchableRipple = _ref => {
+const TouchableRipple = (_ref, ref) => {
   let {
     style,
     background: _background,
@@ -185,6 +186,7 @@ const TouchableRipple = _ref => {
   });
   const disabled = disabledProp || !hasPassedTouchHandler;
   return /*#__PURE__*/React.createElement(Pressable, _extends({}, rest, {
+    ref: ref,
     onPressIn: handlePressIn,
     onPressOut: handlePressOut,
     disabled: disabled,
@@ -213,5 +215,6 @@ const styles = StyleSheet.create({
     overflow: 'hidden'
   }
 });
-export default TouchableRipple;
+const Component = forwardRef(TouchableRipple);
+export default Component;
 //# sourceMappingURL=TouchableRipple.js.map

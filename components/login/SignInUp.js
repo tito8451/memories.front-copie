@@ -5,9 +5,9 @@ import Button from '../Button';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { connectUser } from '../../reducers/user';
-//import { API_KEY } from '@env';
+import { API_KEY } from '@env';
 
-const API_KEY = 'http://192.168.1.59:3000';
+// const API_KEY = 'http://192.168.1.59:3000';
 
 export default function SignInUp({ register, setRegister, navigation }) {
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ export default function SignInUp({ register, setRegister, navigation }) {
     if (checkEmail() && password) {
       fetch(`${API_KEY}/user/login`, {
         method: 'POST',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email: email, password: password }),
@@ -68,7 +68,7 @@ export default function SignInUp({ register, setRegister, navigation }) {
     if (registerInfosIsOk) {
       fetch(`${API_KEY}/user/signup`, {
         method: 'POST',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -152,7 +152,7 @@ export default function SignInUp({ register, setRegister, navigation }) {
               <Input
                 value={username}
                 setValue={setUsername}
-                placeholder="Username"
+                placeholder='Username'
                 size={register ? 'normal' : 'large'}
                 border
                 error={error}
@@ -161,7 +161,7 @@ export default function SignInUp({ register, setRegister, navigation }) {
               <Input
                 value={firstname}
                 setValue={setFirstname}
-                placeholder="Firstname"
+                placeholder='Firstname'
                 size={register ? 'normal' : 'large'}
                 border
                 error={error}
@@ -170,7 +170,7 @@ export default function SignInUp({ register, setRegister, navigation }) {
               <Input
                 value={lastname}
                 setValue={setLastname}
-                placeholder="LastName"
+                placeholder='LastName'
                 size={register ? 'normal' : 'large'}
                 border
                 error={error}
@@ -181,7 +181,7 @@ export default function SignInUp({ register, setRegister, navigation }) {
           <Input
             value={email}
             setValue={setEmail}
-            placeholder="Email"
+            placeholder='Email'
             size={register ? 'normal' : 'large'}
             border
             error={error}
@@ -190,7 +190,7 @@ export default function SignInUp({ register, setRegister, navigation }) {
           <Input
             value={password}
             setValue={setPassword}
-            placeholder="Password"
+            placeholder='Password'
             size={register ? 'normal' : 'large'}
             border
             error={error}
@@ -200,7 +200,7 @@ export default function SignInUp({ register, setRegister, navigation }) {
             <Input
               value={confirmPassword}
               setValue={setConfirmPassword}
-              placeholder="Confirm Password"
+              placeholder='Confirm Password'
               size={register ? 'normal' : 'large'}
               border
               error={error}
@@ -208,7 +208,7 @@ export default function SignInUp({ register, setRegister, navigation }) {
             />
           )}
           <Button
-            title="Connect"
+            title='Connect'
             onClick={handleConnect}
             marginTop={register}
           />

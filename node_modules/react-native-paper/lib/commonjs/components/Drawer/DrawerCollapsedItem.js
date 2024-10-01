@@ -48,6 +48,7 @@ const DrawerCollapsedItem = _ref => {
     theme: themeOverrides,
     style,
     onPress,
+    disabled,
     accessibilityLabel,
     badge = false,
     testID = 'drawer-collapsed-item',
@@ -99,9 +100,10 @@ const DrawerCollapsedItem = _ref => {
     ...(isV3 ? theme.fonts.labelMedium : {})
   };
   const icon = !active && unfocusedIcon !== undefined ? unfocusedIcon : focusedIcon;
-  return /*#__PURE__*/React.createElement(_reactNative.View, rest, /*#__PURE__*/React.createElement(_reactNative.TouchableWithoutFeedback, {
+  return /*#__PURE__*/React.createElement(_reactNative.View, rest, /*#__PURE__*/React.createElement(_reactNative.Pressable, {
     onPress: onPress,
-    onPressOut: onPress ? handlePressOut : undefined
+    onPressOut: onPress ? handlePressOut : undefined,
+    disabled: disabled
     // @ts-expect-error We keep old a11y props for backwards compat with old RN versions
     ,
     accessibilityTraits: active ? ['button', 'selected'] : 'button',

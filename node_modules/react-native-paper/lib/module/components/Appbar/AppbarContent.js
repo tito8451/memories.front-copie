@@ -1,6 +1,6 @@
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 import * as React from 'react';
-import { Platform, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { Platform, StyleSheet, Pressable, View } from 'react-native';
 import color from 'color';
 import { modeTextVariant } from './utils';
 import { useInternalTheme } from '../../core/theming';
@@ -54,11 +54,13 @@ const AppbarContent = _ref => {
     'center-aligned': styles.v3DefaultContainer
   };
   const variant = modeTextVariant[mode];
-  const content = /*#__PURE__*/React.createElement(View, _extends({
-    pointerEvents: "box-none",
+  const contentWrapperProps = {
+    pointerEvents: 'box-none',
     style: [styles.container, isV3 && modeContainerStyles[mode], style],
-    testID: testID
-  }, rest), typeof title === 'string' ? /*#__PURE__*/React.createElement(Text, _extends({}, isV3 && {
+    testID,
+    ...rest
+  };
+  const content = /*#__PURE__*/React.createElement(React.Fragment, null, typeof title === 'string' ? /*#__PURE__*/React.createElement(Text, _extends({}, isV3 && {
     variant
   }, {
     ref: titleRef,
@@ -84,7 +86,7 @@ const AppbarContent = _ref => {
     return (
       /*#__PURE__*/
       // eslint-disable-next-line react-native-a11y/has-accessibility-props
-      React.createElement(TouchableWithoutFeedback, {
+      React.createElement(Pressable, _extends({
         accessibilityRole: touchableRole
         // @ts-expect-error We keep old a11y props for backwards compat with old RN versions
         ,
@@ -92,10 +94,10 @@ const AppbarContent = _ref => {
         accessibilityComponentType: "button",
         onPress: onPress,
         disabled: disabled
-      }, content)
+      }, contentWrapperProps), content)
     );
   }
-  return content;
+  return /*#__PURE__*/React.createElement(View, contentWrapperProps, content);
 };
 AppbarContent.displayName = 'Appbar.Content';
 const styles = StyleSheet.create({

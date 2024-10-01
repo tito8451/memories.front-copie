@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PressableAndroidRippleConfig, StyleProp, ViewStyle, GestureResponderEvent, ColorValue } from 'react-native';
+import { PressableAndroidRippleConfig, StyleProp, ViewStyle, GestureResponderEvent, View, ColorValue } from 'react-native';
 import type { PressableProps } from './Pressable';
 import type { ThemeProp } from '../../types';
 export declare type Props = PressableProps & {
@@ -17,9 +17,8 @@ export declare type Props = PressableProps & {
     style?: StyleProp<ViewStyle>;
     theme?: ThemeProp;
 };
-declare const TouchableRipple: {
-    ({ style, background, borderless, disabled: disabledProp, rippleColor, underlayColor, children, theme: themeOverrides, ...rest }: Props): React.JSX.Element;
+declare const _default: import("../../utils/forwardRef").ForwardRefComponent<View, Props> & {
     supported: boolean;
 };
-export default TouchableRipple;
+export default _default;
 //# sourceMappingURL=TouchableRipple.native.d.ts.map

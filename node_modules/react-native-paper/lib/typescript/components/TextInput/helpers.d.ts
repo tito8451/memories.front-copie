@@ -91,6 +91,7 @@ export declare const getConstants: (isV3?: boolean) => {
     INPUT_PADDING_HORIZONTAL: number;
     ADORNMENT_OFFSET: number;
     OUTLINED_INPUT_OFFSET: number;
+    MIN_WIDTH: number;
 };
 export {};
 //# sourceMappingURL=helpers.d.ts.map

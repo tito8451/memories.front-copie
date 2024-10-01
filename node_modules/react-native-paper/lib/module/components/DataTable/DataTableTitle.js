@@ -1,6 +1,6 @@
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 import * as React from 'react';
-import { Animated, I18nManager, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { Animated, I18nManager, Pressable, StyleSheet } from 'react-native';
 import color from 'color';
 import { useInternalTheme } from '../../core/theming';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
@@ -74,12 +74,12 @@ const DataTableTitle = _ref => {
     color: textColor,
     direction: I18nManager.getConstants().isRTL ? 'rtl' : 'ltr'
   })) : null;
-  return /*#__PURE__*/React.createElement(TouchableWithoutFeedback, _extends({
+  return /*#__PURE__*/React.createElement(Pressable, _extends({
     disabled: !onPress,
     onPress: onPress
-  }, rest), /*#__PURE__*/React.createElement(View, {
+  }, rest, {
     style: [styles.container, numeric && styles.right, style]
-  }, icon, /*#__PURE__*/React.createElement(Text, {
+  }), icon, /*#__PURE__*/React.createElement(Text, {
     style: [styles.cell,
     // height must scale with numberOfLines
     {
@@ -91,7 +91,7 @@ const DataTableTitle = _ref => {
     }, textStyle],
     numberOfLines: numberOfLines,
     maxFontSizeMultiplier: maxFontSizeMultiplier
-  }, children)));
+  }, children));
 };
 DataTableTitle.displayName = 'DataTable.Title';
 const styles = StyleSheet.create({

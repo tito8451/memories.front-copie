@@ -63,11 +63,13 @@ const AppbarContent = _ref => {
     'center-aligned': styles.v3DefaultContainer
   };
   const variant = _utils.modeTextVariant[mode];
-  const content = /*#__PURE__*/React.createElement(_reactNative.View, _extends({
-    pointerEvents: "box-none",
+  const contentWrapperProps = {
+    pointerEvents: 'box-none',
     style: [styles.container, isV3 && modeContainerStyles[mode], style],
-    testID: testID
-  }, rest), typeof title === 'string' ? /*#__PURE__*/React.createElement(_Text.default, _extends({}, isV3 && {
+    testID,
+    ...rest
+  };
+  const content = /*#__PURE__*/React.createElement(React.Fragment, null, typeof title === 'string' ? /*#__PURE__*/React.createElement(_Text.default, _extends({}, isV3 && {
     variant
   }, {
     ref: titleRef,
@@ -93,7 +95,7 @@ const AppbarContent = _ref => {
     return (
       /*#__PURE__*/
       // eslint-disable-next-line react-native-a11y/has-accessibility-props
-      React.createElement(_reactNative.TouchableWithoutFeedback, {
+      React.createElement(_reactNative.Pressable, _extends({
         accessibilityRole: touchableRole
         // @ts-expect-error We keep old a11y props for backwards compat with old RN versions
         ,
@@ -101,10 +103,10 @@ const AppbarContent = _ref => {
         accessibilityComponentType: "button",
         onPress: onPress,
         disabled: disabled
-      }, content)
+      }, contentWrapperProps), content)
     );
   }
-  return content;
+  return /*#__PURE__*/React.createElement(_reactNative.View, contentWrapperProps, content);
 };
 exports.AppbarContent = AppbarContent;
 AppbarContent.displayName = 'Appbar.Content';

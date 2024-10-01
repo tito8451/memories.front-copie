@@ -83,12 +83,12 @@ const DataTableTitle = _ref => {
     color: textColor,
     direction: _reactNative.I18nManager.getConstants().isRTL ? 'rtl' : 'ltr'
   })) : null;
-  return /*#__PURE__*/React.createElement(_reactNative.TouchableWithoutFeedback, _extends({
+  return /*#__PURE__*/React.createElement(_reactNative.Pressable, _extends({
     disabled: !onPress,
     onPress: onPress
-  }, rest), /*#__PURE__*/React.createElement(_reactNative.View, {
+  }, rest, {
     style: [styles.container, numeric && styles.right, style]
-  }, icon, /*#__PURE__*/React.createElement(_Text.default, {
+  }), icon, /*#__PURE__*/React.createElement(_Text.default, {
     style: [styles.cell,
     // height must scale with numberOfLines
     {
@@ -100,7 +100,7 @@ const DataTableTitle = _ref => {
     }, textStyle],
     numberOfLines: numberOfLines,
     maxFontSizeMultiplier: maxFontSizeMultiplier
-  }, children)));
+  }, children));
 };
 exports.DataTableTitle = DataTableTitle;
 DataTableTitle.displayName = 'DataTable.Title';

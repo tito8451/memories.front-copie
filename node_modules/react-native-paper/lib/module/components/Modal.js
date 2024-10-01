@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Animated, Easing, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { Animated, Easing, StyleSheet, Pressable, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import useLatestCallback from 'use-latest-callback';
 import Surface from './Surface';
@@ -8,6 +8,7 @@ import { addEventListener } from '../utils/addEventListener';
 import { BackHandler } from '../utils/BackHandler/BackHandler';
 import useAnimatedValue from '../utils/useAnimatedValue';
 const DEFAULT_DURATION = 220;
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 /**
  * The Modal component is a simple way to present content above an enclosing view.
@@ -137,19 +138,18 @@ function Modal(_ref) {
     style: StyleSheet.absoluteFill,
     onAccessibilityEscape: hideModal,
     testID: testID
-  }, /*#__PURE__*/React.createElement(TouchableWithoutFeedback, {
+  }, /*#__PURE__*/React.createElement(AnimatedPressable, {
     accessibilityLabel: overlayAccessibilityLabel,
     accessibilityRole: "button",
     disabled: !dismissable,
     onPress: dismissable ? hideModal : undefined,
-    importantForAccessibility: "no"
-  }, /*#__PURE__*/React.createElement(Animated.View, {
-    testID: `${testID}-backdrop`,
+    importantForAccessibility: "no",
     style: [styles.backdrop, {
       backgroundColor: (_theme$colors = theme.colors) === null || _theme$colors === void 0 ? void 0 : _theme$colors.backdrop,
       opacity
-    }]
-  })), /*#__PURE__*/React.createElement(View, {
+    }],
+    testID: `${testID}-backdrop`
+  }), /*#__PURE__*/React.createElement(View, {
     style: [styles.wrapper, {
       marginTop: top,
       marginBottom: bottom

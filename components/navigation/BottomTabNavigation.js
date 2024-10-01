@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import HomeScreen from '../screens/HomeScreen';
-import ProfilScreen from '../screens/ProfilScreen';
-import ImagesScreen from '../screens/ImagesScreen';
-import TravelScreen from '../screens/TravelScreen';
+import HomeScreen from '../../screens/HomeScreen';
+import ProfilScreen from '../../screens/ProfilScreen';
+import ImagesScreen from '../../screens/ImagesScreen';
+import TravelScreen from '../../screens/TravelScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,8 +17,8 @@ export default function BottomTabNavigation() {
           if (route.name === 'Home') {
             return (
               <Image
-                source={require('../assets/logo-blanc-hd.png')}
-                alt="home"
+                source={require('../../assets/logo-blanc-hd.png')}
+                alt='home'
                 style={{ marginBottom: -16, height: 48, width: 48 }}
               />
             );
@@ -50,22 +50,22 @@ export default function BottomTabNavigation() {
       })}
     >
       <Tab.Screen
-        name="Home"
+        name='Home'
         component={HomeScreen}
         options={{ tabBarLabel: '' }}
       />
       <Tab.Screen
-        name="Profil"
+        name='Profil'
         component={ProfilScreen}
         options={{ tabBarLabel: '' }}
       />
       <Tab.Screen
-        name="Images"
+        name='Images'
         component={ImagesScreen}
         options={{ tabBarLabel: '' }}
       />
       <Tab.Screen
-        name="Travel"
+        name='Travel'
         component={TravelScreen}
         options={{
           tabBarButton: () => null,
@@ -73,4 +73,4 @@ export default function BottomTabNavigation() {
       />
     </Tab.Navigator>
   );
-};
+}

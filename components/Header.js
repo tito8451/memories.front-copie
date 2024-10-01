@@ -15,9 +15,9 @@ import { reverseDate } from '../utils/functions';
 import { useDispatch } from 'react-redux';
 import { updateTravel } from '../reducers/travel';
 import Loader from './loaders/Loader';
-//import {API_KEY} from '@env';
+import { API_KEY } from '@env';
 
-const API_KEY = 'http://192.168.1.59:3000';
+// const API_KEY = 'http://192.168.1.59:3000';
 import * as ImagePicker from 'expo-image-picker';
 
 export default function Header({ isDairyActive, setIsDairyActive, id }) {
@@ -139,13 +139,13 @@ export default function Header({ isDairyActive, setIsDairyActive, id }) {
                   {coverImage ? (
                     <Image
                       source={{ uri: coverImage }}
-                      alt="photo"
+                      alt='photo'
                       style={tw`w-[2.5rem] h-[2.5rem] rounded-[.5rem]`}
                     />
                   ) : (
                     <Image
                       source={require('../assets/favicon.png')}
-                      alt="photo"
+                      alt='photo'
                       style={tw`w-[2.5rem] h-[2.5rem] rounded-[.5rem] border border-black`}
                     />
                   )}
@@ -175,7 +175,7 @@ export default function Header({ isDairyActive, setIsDairyActive, id }) {
                   <InputDate
                     value={departureDate}
                     setValue={setDepartureDate}
-                    size="normal"
+                    size='normal'
                   />
                 ) : (
                   <Text style={tw`text-[#073040] text-[1rem]`}>
@@ -195,10 +195,12 @@ export default function Header({ isDairyActive, setIsDairyActive, id }) {
                   <InputDate
                     value={returnDate}
                     setValue={setReturnDate}
-                    size="normal"
+                    size='normal'
                   />
                 ) : (
-                  <Text style={tw`text-[#073040] text-[1rem]`}>{returnDate}</Text>
+                  <Text style={tw`text-[#073040] text-[1rem]`}>
+                    {returnDate}
+                  </Text>
                 )}
               </View>
             </View>
@@ -208,7 +210,7 @@ export default function Header({ isDairyActive, setIsDairyActive, id }) {
                   onPress={handleChange}
                   style={tw`py-[.3rem] px-[.5rem] bg-[#073040] rounded-[.5rem] mt-[.5rem]`}
                 >
-                  <FontAwesome name="check" size={24} color="#F2DDC2" />
+                  <FontAwesome name='check' size={24} color='#F2DDC2' />
                 </TouchableOpacity>
               </View>
             )}

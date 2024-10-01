@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ColorValue, GestureResponderEvent, StyleProp, ViewStyle } from 'react-native';
+import { ColorValue, GestureResponderEvent, StyleProp, View, ViewStyle } from 'react-native';
 import type { PressableProps, PressableStateCallbackType } from './Pressable';
 import type { ThemeProp } from '../../types';
 export declare type Props = PressableProps & {
@@ -54,37 +54,8 @@ export declare type Props = PressableProps & {
      */
     theme?: ThemeProp;
 };
-/**
- * A wrapper for views that should respond to touches.
- * Provides a material "ink ripple" interaction effect for supported platforms (>= Android Lollipop).
- * On unsupported platforms, it falls back to a highlight effect.
- *
- * ## Usage
- * ```js
- * import * as React from 'react';
- * import { View } from 'react-native';
- * import { Text, TouchableRipple } from 'react-native-paper';
- *
- * const MyComponent = () => (
- *   <TouchableRipple
- *     onPress={() => console.log('Pressed')}
- *     rippleColor="rgba(0, 0, 0, .32)"
- *   >
- *     <Text>Press anywhere</Text>
- *   </TouchableRipple>
- * );
- *
- * export default MyComponent;
- * ```
- *
- * @extends Pressable props https://reactnative.dev/docs/Pressable#props
- */
-declare const TouchableRipple: {
-    ({ style, background: _background, borderless, disabled: disabledProp, rippleColor, underlayColor: _underlayColor, children, theme: themeOverrides, ...rest }: Props): React.JSX.Element;
-    /**
-     * Whether ripple effect is supported.
-     */
+declare const _default: import("../../utils/forwardRef").ForwardRefComponent<View, Props> & {
     supported: boolean;
 };
-export default TouchableRipple;
+export default _default;
 //# sourceMappingURL=TouchableRipple.d.ts.map

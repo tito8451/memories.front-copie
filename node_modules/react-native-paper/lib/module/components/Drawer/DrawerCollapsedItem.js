@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Animated, Platform, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { Animated, Platform, Pressable, StyleSheet, View } from 'react-native';
 import { useInternalTheme } from '../../core/theming';
 import Badge from '../Badge';
 import Icon from '../Icon';
@@ -39,6 +39,7 @@ const DrawerCollapsedItem = _ref => {
     theme: themeOverrides,
     style,
     onPress,
+    disabled,
     accessibilityLabel,
     badge = false,
     testID = 'drawer-collapsed-item',
@@ -90,9 +91,10 @@ const DrawerCollapsedItem = _ref => {
     ...(isV3 ? theme.fonts.labelMedium : {})
   };
   const icon = !active && unfocusedIcon !== undefined ? unfocusedIcon : focusedIcon;
-  return /*#__PURE__*/React.createElement(View, rest, /*#__PURE__*/React.createElement(TouchableWithoutFeedback, {
+  return /*#__PURE__*/React.createElement(View, rest, /*#__PURE__*/React.createElement(Pressable, {
     onPress: onPress,
-    onPressOut: onPress ? handlePressOut : undefined
+    onPressOut: onPress ? handlePressOut : undefined,
+    disabled: disabled
     // @ts-expect-error We keep old a11y props for backwards compat with old RN versions
     ,
     accessibilityTraits: active ? ['button', 'selected'] : 'button',

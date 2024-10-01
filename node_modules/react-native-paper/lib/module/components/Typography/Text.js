@@ -1,6 +1,8 @@
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 import * as React from 'react';
 import { I18nManager, StyleSheet, Text as NativeText } from 'react-native';
+import AnimatedText from './AnimatedText';
+import StyledText from './v2/StyledText';
 import { useInternalTheme } from '../../core/theming';
 import { forwardRef } from '../../utils/forwardRef';
 // @component-group Typography
@@ -61,7 +63,7 @@ const Text = (_ref, ref) => {
   if (theme.isV3 && variant) {
     let font = theme.fonts[variant];
     let textStyle = [font, style];
-    if (rest.children && typeof rest.children === 'object' && 'props' in rest.children) {
+    if ( /*#__PURE__*/React.isValidElement(rest.children) && (rest.children.type === Component || rest.children.type === AnimatedText || rest.children.type === StyledText)) {
       const {
         props
       } = rest.children;

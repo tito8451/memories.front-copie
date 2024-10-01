@@ -5,10 +5,11 @@ import { Pressable } from './Pressable';
 import { getTouchableRippleColors } from './utils';
 import { SettingsContext } from '../../core/settings';
 import { useInternalTheme } from '../../core/theming';
+import { forwardRef } from '../../utils/forwardRef';
 import hasTouchHandler from '../../utils/hasTouchHandler';
 const ANDROID_VERSION_LOLLIPOP = 21;
 const ANDROID_VERSION_PIE = 28;
-const TouchableRipple = _ref => {
+const TouchableRipple = (_ref, ref) => {
   let {
     style,
     background,
@@ -56,12 +57,14 @@ const TouchableRipple = _ref => {
       foreground: useForeground
     } : undefined;
     return /*#__PURE__*/React.createElement(Pressable, _extends({}, rest, {
+      ref: ref,
       disabled: disabled,
       style: [borderless && styles.overflowHidden, style],
       android_ripple: androidRipple
     }), React.Children.only(children));
   }
   return /*#__PURE__*/React.createElement(Pressable, _extends({}, rest, {
+    ref: ref,
     disabled: disabled,
     style: [borderless && styles.overflowHidden, style]
   }), _ref2 => {
@@ -86,5 +89,6 @@ const styles = StyleSheet.create({
     zIndex: 2
   }
 });
-export default TouchableRipple;
+const Component = forwardRef(TouchableRipple);
+export default Component;
 //# sourceMappingURL=TouchableRipple.native.js.map

@@ -12,6 +12,10 @@ export declare type Props = React.ComponentPropsWithRef<typeof View> & {
      */
     badge?: string | number | boolean;
     /**
+     * Whether the item is disabled.
+     */
+    disabled?: boolean;
+    /**
      * @renamed Renamed from 'icon' to 'focusedIcon' in v5.x
      * Icon to use as the focused destination icon, can be a string, an image source or a react component
      */
@@ -69,7 +73,7 @@ export declare type Props = React.ComponentPropsWithRef<typeof View> & {
  * ```
  */
 declare const DrawerCollapsedItem: {
-    ({ focusedIcon, unfocusedIcon, label, active, theme: themeOverrides, style, onPress, accessibilityLabel, badge, testID, labelMaxFontSizeMultiplier, ...rest }: Props): React.JSX.Element | null;
+    ({ focusedIcon, unfocusedIcon, label, active, theme: themeOverrides, style, onPress, disabled, accessibilityLabel, badge, testID, labelMaxFontSizeMultiplier, ...rest }: Props): React.JSX.Element | null;
     displayName: string;
 };
 export default DrawerCollapsedItem;
