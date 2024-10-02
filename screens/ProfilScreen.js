@@ -47,7 +47,7 @@ export default function ProfileScreen({ navigation }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         dispatch(updateUser(updatedData));
       })
       .catch((error) => {
@@ -129,7 +129,7 @@ export default function ProfileScreen({ navigation }) {
                 <View
                   style={tw`absolute w-25 h-30 rounded-full overflow-hidden bg-[#073040]/70 items-center justify-center`}
                 >
-                  <FontAwesome name="edit" size={40} style={tw`text-white`} />
+                  <FontAwesome name='edit' size={40} style={tw`text-white`} />
                 </View>
               </TouchableOpacity>
             ) : (
@@ -137,7 +137,7 @@ export default function ProfileScreen({ navigation }) {
                 onPress={() => handleChooseImage()}
                 style={tw`p-[2rem] bg-white/60 rounded-full flex items-center`}
               >
-                <FontAwesome name="user" size={48} />
+                <FontAwesome name='user' size={48} />
               </TouchableOpacity>
             )
           ) : avatar ? (
@@ -151,7 +151,7 @@ export default function ProfileScreen({ navigation }) {
             <View
               style={tw`p-[2rem] bg-white/60 rounded-full flex items-center`}
             >
-              <FontAwesome name="user" size={48} />
+              <FontAwesome name='user' size={48} />
             </View>
           )}
         </View>
@@ -177,8 +177,8 @@ export default function ProfileScreen({ navigation }) {
             <Input
               value={firstname}
               setValue={setFirstname}
-              placeholder="Prénom"
-              size="normal"
+              placeholder='Prénom'
+              size='normal'
             />
           ) : (
             <Text
@@ -196,8 +196,8 @@ export default function ProfileScreen({ navigation }) {
             <Input
               value={lastname}
               setValue={setLastname}
-              placeholder="Nom de famille"
-              size="normal"
+              placeholder='Nom de famille'
+              size='normal'
             />
           ) : (
             <Text
@@ -215,8 +215,8 @@ export default function ProfileScreen({ navigation }) {
             <Input
               value={email}
               setValue={setEmail}
-              placeholder="Email"
-              size="normal"
+              placeholder='Email'
+              size='normal'
             />
           ) : (
             <Text

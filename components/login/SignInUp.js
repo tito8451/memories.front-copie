@@ -33,7 +33,7 @@ export default function SignInUp({ register, setRegister, navigation }) {
   };
 
   const signIn = () => {
-    console.log('infos', email, password);
+    // console.log('infos', email, password);
     if (checkEmail() && password) {
       fetch(`${API_KEY}/user/login`, {
         method: 'POST',
@@ -44,7 +44,7 @@ export default function SignInUp({ register, setRegister, navigation }) {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log('data', data);
+          // console.log('data', data);
           if (data.user) {
             dispatch(connectUser(data.user));
             navigation.navigate('TabNavigator');
