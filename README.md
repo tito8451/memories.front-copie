@@ -21,6 +21,13 @@ Redux
 
 [![Video of the project](assets/visu-app.png)](https://youtu.be/120SyxVbSNo)
 
+## Tester notre application
+
+Faites un yarn start dans un IDE de votre choix
+
+Installer expo go sur votre téléphonne
+
+Ouvrer votre appareil photo et laissez-vous guider dans l'application
 
 ## 📰 License
 
@@ -39,7 +46,5 @@ Visit http://creativecommons.org/licenses/by-nc/4.0/
 [Thomas Cornu](https://github.com/tito8451)
 
 
-# memories-front
-# memories-front
-# memories.front-copie
+
 # memories.front-copie
