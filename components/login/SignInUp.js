@@ -38,6 +38,7 @@ export default function SignInUp({ register, setRegister, navigation }) {
     // console.log('infos', email, password);
     if (checkEmail() && password) {
       fetch(`${API_KEY}/user/login`, {
+        // fetch("https://memories-back-thom-tito8451s-projects.vercel.app",{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

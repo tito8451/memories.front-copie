@@ -19,7 +19,7 @@ import { API_KEY } from "@env";
 // const API_KEY = 'http://192.168.1.59:3000';
 
 // export defaultimport env from 'react-native-dotenv';
-function ImagesScreen() {
+export default function ImagesScreen() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
   const images = useSelector((state) => state.allImages.value);
