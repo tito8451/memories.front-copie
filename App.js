@@ -5,7 +5,7 @@ import BottomTabNavigation from './components/navigation/BottomTabNavigation.js'
 
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { persistor, store } from './reducers/configureStore';
+import { store, persistor } from './reducers/configureStore';
 
 import { LogBox } from 'react-native';
 LogBox.ignoreAllLogs();

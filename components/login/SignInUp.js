@@ -10,6 +10,8 @@ import { API_KEY } from '@env';
 // const API_KEY = 'http://192.168.1.59:3000';
 
 export default function SignInUp({ register, setRegister, navigation }) {
+  console.log('API_KEY:', API_KEY);
+
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
 

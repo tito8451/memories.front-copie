@@ -14,9 +14,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { initAllImages } from '../reducers/allImages';
 import ModalBigPhotos from '../components/imagesscreen/ModalBigPhotos';
 import Loader from '../components/loaders/Loader';
-// import { API_KEY } from "@env";
+import { API_KEY } from "@env";
 // import env from 'react-native-dotenv';
-const API_KEY = 'http://192.168.1.59:3000';
+// const API_KEY = 'http://192.168.1.59:3000';
 
 // export defaultimport env from 'react-native-dotenv';
 function ImagesScreen() {
