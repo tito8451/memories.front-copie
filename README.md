@@ -23,7 +23,8 @@ Redux
 
 ## Tester notre application
 
-Faites un yarn start dans un IDE de votre choix
+
+Faites un yarn install et yarn start dans un IDE de votre choix
 
 Installer expo go sur votre téléphonne
 
@@ -37,13 +38,14 @@ Visit http://creativecommons.org/licenses/by-nc/4.0/
 
 ## 💬 Contact
 
-[Valène Bonnet](https://github.co/valeneb)
+[Thomas Cornu](https://github.com/tito8451)
 
 ## 🤝 Contributors
 
 [Charlie Boudou](https://github.com/charlie-boudou)
 
-[Thomas Cornu](https://github.com/tito8451)
+[Valène Bonnet](https://github.co/valeneb)
+
 
 
 
